@@ -1,0 +1,115 @@
+<div class="container" style="direction: rtl; text-align: center;padding-top: 20px;">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    تقرير شركة
+                </div>
+                <div class="col-4">
+                    
+                </div>
+                <div class="col-4">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl('/assets/logos/kokaz.PNG')" width="150px" height="125px" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th *ngFor="let header of headers">{{header}}</th>
+                </thead>
+                <tbody>
+                   
+                    <tr *ngFor="let order of orders">
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="order.ClientName" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="order.ProducerName" class="form-control"
+                                    id="inputAddress" placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="order.Count" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="order.price" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="order.date" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" (click)="deleteOrder(order)" class="btn btn-danger">X</button>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="Order.ClientName" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="Order.ProducerName" class="form-control"
+                                    id="inputAddress" placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="number" [(ngModel)]="Order.Count" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="number" [(ngModel)]="Order.price" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="Order.date" class="form-control" id="inputAddress"
+                                    placeholder="">
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" (click)="addOrder()" class="btn btn-primary">+</button>
+
+                        </td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="2">
+                            الإجمالي
+                        </td>
+                        <td>
+                            {{counts}}
+                        </td>
+                        <td>
+                            {{prices}}
+                        </td>
+                        <td colspan="2">
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
