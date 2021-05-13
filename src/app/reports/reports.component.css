@@ -1,0 +1,12 @@
+.container{
+    direction: rtl; text-align: center;padding-top: 20px;
+}
+@media print {
+    .container{
+        direction: rtl; text-align: center;padding-top: 20px;
+    }
+    #componentID{
+        direction: rtl; text-align: center;padding-top: 20px;
+
+    }
+}
