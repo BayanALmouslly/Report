@@ -1,0 +1,73 @@
+<div class="container" id="componentID">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    فاتورة شركة قوقز
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl('/assets/logos/kokaz.PNG')" width="150px"
+                        height="125px" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th *ngFor="let header of headers">{{header}}</th>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let order of orders">
+
+                        <td>
+                            {{order.ClientName}}
+                            
+                        </td>
+                        <td>
+                            {{order.ProducerName}}
+                          
+                        </td>
+                        <td>
+                             <img [src]="order.ProducerImage" width="150px" height="125px" />
+
+                        </td>
+                        <td>
+                            {{order.Count}}
+                            
+                        </td>
+                        <td>
+                            {{order.price}}
+                            
+                        </td>
+                        <td>
+                            {{ order.date | date:'medium' }}  
+                           
+                        </td>
+                        
+                    </tr>
+                
+                    <tr style="text-align: right;">
+                        <td colspan="2">
+                            الإجمالي
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            {{prices}}
+                        </td>
+                        <td colspan="3">
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

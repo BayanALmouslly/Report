@@ -1,4 +1,4 @@
-<div class="container" id="componentID">
+<div class="container" >
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -27,7 +27,7 @@
 
                         <td>
                             <div class="form-group">
-                                <input type="text" [(ngModel)]="order.ClientName" class="form-control" id="inputAddress"
+                                <input type="text"  [(ngModel)]="order.ClientName" class="form-control" id="inputAddress"
                                     placeholder="">
                             </div>
                         </td>
@@ -101,7 +101,7 @@
                         <td>
                             <div class="form-group">
                                 <input type="datetime-local" [(ngModel)]="Order.date" class="form-control"
-                                    id="inputAddress" placeholder="">
+                                    id="inputAddress" placeholder="" >
                             </div>
                         </td>
                         <td>
@@ -129,3 +129,4 @@
         </div>
     </div>
 </div>
+<app-print-reports [orders]="orders"id="componentID"[hidden]="true"></app-print-reports>

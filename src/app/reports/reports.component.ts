@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Report } from '../models/report.model';
 
@@ -53,8 +53,9 @@ export class ReportsComponent implements OnInit {
       order.ProducerImage = reader.result;
     }
   }
+  showAfterPrint:boolean=false
   print() {
-   
+   this.showAfterPrint=true
    var divToPrint = document.getElementById('componentID');
   var newWin = window.open('', 'Print-Window');
   newWin?.document.open();
@@ -62,6 +63,10 @@ export class ReportsComponent implements OnInit {
   newWin?.document.close();
   setTimeout(function() {
     newWin?.close();
+    location.reload();
+
   }, 10);
+
   }
+ 
 }

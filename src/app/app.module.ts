@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportsComponent } from './reports/reports.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrintReportsComponent } from './print/print-reports/print-reports.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReportsComponent
+    ReportsComponent,
+    PrintReportsComponent
   ],
   imports: [
     BrowserModule,
