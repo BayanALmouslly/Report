@@ -11,9 +11,11 @@ export class PrintReportsComponent implements OnInit {
 
   
   constructor(public sanitizer: DomSanitizer,) { }
-  headers: string[] = [' العميل', ' المنتج', 'صورة المنتج', 'الكمية', 'السعر', 'الوقت والتاريخ', '']
+  headers: string[] = [ ' المنتج', 'صورة المنتج', 'الكمية', 'السعر','الإجمالي',  '']
   @Input() orders: any[] = []
   Order: Report = new Report()
+  @Input() ClientName:any
+  @Input() date: any 
   ngOnInit(): void {
     this.sumSalary()
   }
@@ -24,8 +26,8 @@ export class PrintReportsComponent implements OnInit {
     this.orders.forEach(o => {
       this.counts = 0
       this.prices = 0
-      this.prices += o.price * o.Count
-      //this.counts += o.Count
+      this.prices += o.price 
+      this.counts += o.Count
     })
   }
  

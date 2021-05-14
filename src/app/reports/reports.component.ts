@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Data } from '@angular/router';
 import { Report } from '../models/report.model';
 
 @Component({
@@ -10,9 +11,11 @@ import { Report } from '../models/report.model';
 export class ReportsComponent implements OnInit {
 
   constructor(public sanitizer: DomSanitizer,) { }
-  headers: string[] = [' العميل', ' المنتج', 'صورة المنتج', 'الكمية', 'السعر', 'الوقت والتاريخ', '']
+  headers: string[] = [ ' المنتج', 'صورة المنتج', 'الكمية', 'السعر','الإجمالي',  '']
   orders: Report[] = []
   Order: Report = new Report()
+  ClientName: string = ""
+  date: Data = new Date()
   ngOnInit(): void {
   }
   addOrder() {
@@ -31,8 +34,8 @@ export class ReportsComponent implements OnInit {
     this.orders.forEach(o => {
       this.counts = 0
       this.prices = 0
-      this.prices += o.price * o.Count
-      //this.counts += o.Count
+      this.prices += o.price 
+      this.counts += o.Count
     })
   }
   imagePath: any
@@ -53,20 +56,19 @@ export class ReportsComponent implements OnInit {
       order.ProducerImage = reader.result;
     }
   }
-  showAfterPrint:boolean=false
+  showAfterPrint: boolean = false
   print() {
-   this.showAfterPrint=true
-   var divToPrint = document.getElementById('componentID');
-  var newWin = window.open('', 'Print-Window');
-  newWin?.document.open();
-  newWin?.document.write('<html><style>.container{direction: rtl; text-align: center;padding-top: 20px;}</style><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" media="print"/><body onload="window.print()">' + divToPrint?.innerHTML + '</body></html>');
-  newWin?.document.close();
-  setTimeout(function() {
-    newWin?.close();
-    location.reload();
+    this.showAfterPrint = true
+    var divToPrint = document.getElementById('componentID');
+    var newWin = window.open('', 'Print-Window');
+    newWin?.document.open();
+    newWin?.document.write('<html><style>.container{direction: rtl; text-align: center;padding-top: 20px;}</style><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" media="print"/><body onload="window.print()">' + divToPrint?.innerHTML + '</body></html>');
+    newWin?.document.close();
+    setTimeout(function () {
+      newWin?.close();
+      // location.reload();
 
-  }, 10);
+    }, 10);
 
   }
- 
 }

@@ -3,7 +3,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-4">
-                    فاتورة شركة قوقز
+                    <br>
+               <h3>فاتورة شركة قوقز</h3>     
                 </div>
                 <div class="col-4">
 
@@ -12,6 +13,22 @@
                     <img [src]="sanitizer.bypassSecurityTrustUrl('/assets/logos/kokaz.PNG')" width="150px"
                         height="125px" />
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>العميل</label>
+                        <input type="text"  [(ngModel)]="ClientName" class="form-control" id="inputAddress"
+                            placeholder="">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>التاريخ</label>
+                        <input type="date" [(ngModel)]="date" class="form-control"
+                            id="inputAddress" placeholder="" >
+                    </div>
+                </div> 
             </div>
         </div>
     </div>
@@ -25,12 +42,6 @@
 
                     <tr *ngFor="let order of orders">
 
-                        <td>
-                            <div class="form-group">
-                                <input type="text"  [(ngModel)]="order.ClientName" class="form-control" id="inputAddress"
-                                    placeholder="">
-                            </div>
-                        </td>
                         <td>
                             <div class="form-group">
                                 <input type="text" [(ngModel)]="order.ProducerName" class="form-control"
@@ -56,10 +67,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="form-group">
-                                <input type="datetime-local" [(ngModel)]="order.date" class="form-control"
-                                    id="inputAddress" placeholder="">
-                            </div>
+                            {{order.price*order.Count}}
                         </td>
                         <td>
                             <button type="button" (click)="deleteOrder(order)" class="btn btn-danger">X</button>
@@ -68,12 +76,7 @@
                     </tr>
                     <tr>
 
-                        <td>
-                            <div class="form-group">
-                                <input type="text" [(ngModel)]="Order.ClientName" class="form-control" id="inputAddress"
-                                    placeholder="">
-                            </div>
-                        </td>
+                      
                         <td>
                             <div class="form-group">
                                 <input type="text" [(ngModel)]="Order.ProducerName" class="form-control"
@@ -99,10 +102,8 @@
                             </div>
                         </td>
                         <td>
-                            <div class="form-group">
-                                <input type="datetime-local" [(ngModel)]="Order.date" class="form-control"
-                                    id="inputAddress" placeholder="" >
-                            </div>
+                            {{Order.price*Order.Count}}
+
                         </td>
                         <td>
                             <button type="button" (click)="addOrder()" class="btn btn-primary">+</button>
@@ -114,12 +115,14 @@
                             الإجمالي
                         </td>
                         <td>
-                        </td>
+                            {{counts}}
+                         </td>
                         <td>
                             {{prices}}
                         </td>
+                       
                         <td colspan="3">
-
+                            {{prices*counts}}
                         </td>
                     </tr>
                 </tbody>
@@ -129,4 +132,5 @@
         </div>
     </div>
 </div>
-<app-print-reports [orders]="orders"id="componentID"[hidden]="true"></app-print-reports>
+<app-print-reports [orders]="orders"[ClientName]="ClientName"[date]="date"
+id="componentID"[hidden]="true"></app-print-reports>
